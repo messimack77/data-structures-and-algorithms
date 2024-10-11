@@ -1,3 +1,4 @@
+import java.util.HashSet;
 import java.util.Stack;
 
 public class DataStructureAndAlgorithm {
@@ -11,6 +12,18 @@ public class DataStructureAndAlgorithm {
 
 
         System.out.println(reverseStack(games));
+
+
+        Stack<Integer> integers = new Stack<>();
+        integers.push(4);
+        integers.push(2);
+        integers.push(3);
+        integers.push(3);
+        integers.push(4);
+        integers.push(5);
+
+        System.out.println(removeDuplicates(integers));
+
     }
 
     // Stack and it accepts what ever data type as input and reverse them
@@ -20,5 +33,25 @@ public class DataStructureAndAlgorithm {
             reversedStack.push(inputStack.pop());
         }
         return reversedStack;
+    }
+
+
+    //  return stack after removing duplicates in the original order
+    public static Stack<Integer> removeDuplicates(Stack<Integer> input) {
+        HashSet<Integer> seen = new HashSet<>();
+        Stack<Integer> usedToHoldStack = new Stack<>();
+        while (!input.isEmpty()){
+            Integer topElement = input.pop();
+            if (!seen.contains(topElement)){
+                seen.add(topElement);
+                usedToHoldStack.push(topElement);
+            }
+        }
+        // To revert the stack to original stack as usedToHoldStack variable contain reverted stack
+        while (!usedToHoldStack.isEmpty()){
+            input.push(usedToHoldStack.pop());
+        }
+
+        return input;
     }
 }
