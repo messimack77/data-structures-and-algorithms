@@ -1,5 +1,4 @@
-import java.util.HashSet;
-import java.util.Stack;
+import java.util.*;
 
 public class DataStructureAndAlgorithm {
     public static void main(String[] args) {
@@ -54,4 +53,17 @@ public class DataStructureAndAlgorithm {
 
         return input;
     }
+
+    //// Given an array of integers, find the indices of two elements that sum up to the target value
+    public static int[] twoSum(int[] input, int target){
+        for (int i = 0; i<input.length; i++){
+            for (int j = i+1; j<input.length; j++){
+                if (input[i] + input[j] == target){
+                    return new int[]{i, j};
+                }
+            }
+        }
+        throw new IllegalArgumentException("Not found");
+    }
+
 }
