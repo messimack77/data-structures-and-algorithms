@@ -66,4 +66,17 @@ public class DataStructureAndAlgorithm {
         throw new IllegalArgumentException("Not found");
     }
 
+
+// Determine if the given number is a palindrome (reads the same backward as forward)
+    public static boolean isPalindrome(int number){
+        int reminder = 0;
+        int reversedNumber = 0; // used to hold reversed number
+        int originalNumber = number;
+        while (number > 0){
+            reminder = number % 10;
+            reversedNumber = (reversedNumber * 10) + reminder;
+            number /= 10;
+        }
+        return originalNumber == reversedNumber;
+    }
 }
