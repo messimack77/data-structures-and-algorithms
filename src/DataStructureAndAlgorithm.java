@@ -2,26 +2,9 @@ import java.util.*;
 
 public class DataStructureAndAlgorithm {
     public static void main(String[] args) {
-        Stack<String> games = new Stack<>();
-        games.push("Football");
-        games.push("Handball");
-        games.push("Baseball");
-        games.push("Basketball");
-        games.push("Tennisball");
 
-
-        System.out.println(reverseStack(games));
-
-
-        Stack<Integer> integers = new Stack<>();
-        integers.push(4);
-        integers.push(2);
-        integers.push(3);
-        integers.push(3);
-        integers.push(4);
-        integers.push(5);
-
-        System.out.println(removeDuplicates(integers));
+        String sentence = "I love you !";
+        System.out.println(lengthOfLastWordInTheSentence(sentence));
 
     }
 
@@ -80,9 +63,6 @@ public class DataStructureAndAlgorithm {
         return originalNumber == reversedNumber;
     }
 
-
-
-
     //Given a sorted array of distinct integers and a target value, return the index if the target is found.
     // If not, return the index where it would be if it were inserted in order.
     public static int searchInsert(int[] nums, int target){
@@ -95,6 +75,15 @@ public class DataStructureAndAlgorithm {
         }
         return nums.length;
     }
+
+
+    //Length of last word
+    public static int lengthOfLastWordInTheSentence(String sentence){
+        String[] words = sentence.split(" ");
+        String lastWord = words[words.length - 1] ;
+        return lastWord.length();
+    }
+
 }
 
 
