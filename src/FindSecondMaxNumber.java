@@ -1,8 +1,8 @@
 public class FindSecondMaxNumber {
 
     public static int findSecondNumber(int[] numbers){
-       int max = Integer.MIN_VALUE;
-       int secondMax = Integer.MIN_VALUE;
+        int max = Integer.MIN_VALUE;
+        int secondMax = Integer.MIN_VALUE;
         for (int i=0; i<numbers.length; i++){
             if (numbers[i] > max){
                 secondMax = max;
