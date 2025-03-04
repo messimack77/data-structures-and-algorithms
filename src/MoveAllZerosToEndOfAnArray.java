@@ -3,8 +3,8 @@ public class MoveAllZerosToEndOfAnArray {
 
     public static int[] moveAllZerosToEndOfAnArray(int[] numbers){
         // move all zeros to end of the array by maintaining the non-zeros order
-        int j = 0;
-        for (int i = 0; i<numbers.length; i++){
+        int j = 0; // j used to manage zeros
+        for (int i = 0; i<numbers.length; i++){ // i used to manage non-zero numbers
             if (numbers[i] != 0 && numbers[j] == 0){
                 int temp = numbers[i];
                 numbers[i] = numbers[j];
