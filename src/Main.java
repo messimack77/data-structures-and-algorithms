@@ -3,21 +3,13 @@ import java.util.Stack;
 public class Main {
     public static void main(String[] args) {
 
+        int[] numbers = {3,4,6,2,5,12,9,8,};
 
-        Stack<Integer> stackOfIntegers = new Stack<>();
-        stackOfIntegers.push(7);
-        stackOfIntegers.push(3);
-        stackOfIntegers.push(4);
-        stackOfIntegers.push(8);
-        stackOfIntegers.push(2);
-        stackOfIntegers.push(5);
-        stackOfIntegers.push(1);
-        stackOfIntegers.push(6);
+        int[] resizedArray = ResizeASizeOfAnArray.resizeAnArraySize(numbers, 16);
 
-        Stack<Integer> sortedStack = SortStack.sortStack(stackOfIntegers);
-
-        for (int i = 0; i < sortedStack.size(); i++) {
-            System.out.println(sortedStack.get(i));
+        for (int i = 0; i<resizedArray.length; i++){
+            System.out.println(resizedArray[i]);
         }
+
     }
 }
