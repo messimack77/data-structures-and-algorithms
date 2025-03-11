@@ -2,9 +2,12 @@ import java.util.Stack;
 
 public class Main {
     public static void main(String[] args) {
-
-        int[] numbers = {1,2,3,4,5,6,7,8,9,10};
-
-        System.out.println(BinarySearch.binarySearch(numbers, 4));
+ RepresentSinglyLinkedList linkedList = new RepresentSinglyLinkedList();
+        linkedList.insertAtEnd(10);
+        linkedList.insertAtEnd(20);
+        linkedList.insertAtBeginning(5);
+        linkedList.traverse();
+        linkedList.deleteNode(10);
+        linkedList.traverse();
     }
 }
