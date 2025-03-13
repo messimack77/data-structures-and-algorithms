@@ -36,6 +36,19 @@ public class SInglyLinkedListImplementation {
     public void setHead(ListNode head) {
         this.head = head;
     }
+
+
+    public static int count(SInglyLinkedListImplementation listNode){
+
+        ListNode current = listNode.getHead();
+        int count = 0;
+        while (current != null){
+            current = current.getNext();
+            count++;
+        }
+
+        return count;
+    }
 }
 
 
