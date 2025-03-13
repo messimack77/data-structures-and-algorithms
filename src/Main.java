@@ -11,6 +11,16 @@ public class Main {
              singlyLinkedList.getHead().setNext(second);
              second.setNext(third);
              third.setNext(fourth);
+             fourth.setNext(fifth);
 
+
+        SInglyLinkedListImplementation.ListNode current = singlyLinkedList.getHead();
+        int count = 0;
+
+        while (current != null){
+            current = current.getNext();
+            count++;
+        }
+        System.out.println(count);
     }
 }
