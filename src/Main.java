@@ -16,6 +16,14 @@ public class Main {
 
         int count = SInglyLinkedListImplementation.count(singlyLinkedList);
         System.out.println(count);
+
+
+
+
+        SInglyLinkedListImplementation listNode = new SInglyLinkedListImplementation();
+        SInglyLinkedListImplementation.ListNode newListNode = new SInglyLinkedListImplementation.ListNode(0);
+        newListNode.setNext(listNode.getHead());
+        listNode.setHead(newListNode);
     }
 
 }
