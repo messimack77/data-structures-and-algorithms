@@ -21,7 +21,6 @@ public class Main {
 
 
 
-
         public void insertToTheEnd(int data){
             ListNode newListNode = new ListNode(data);
             //if head is null, this means the singly linked list is empty.
