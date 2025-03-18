@@ -19,6 +19,15 @@ public class Main {
             }
         }
 
+        public void insertAtTheBeginning(int data){
+            ListNode newNode = new ListNode(data);
+            if (head == null){ // is the node is empty, the new node should be head
+                head = newNode;
+            } else { // the new node's the next pointer should be our head
+                newNode.next = head;
+                head = newNode;// the new node should be head
+            }
+        }
 
 
         public void insertToTheEnd(int data){
