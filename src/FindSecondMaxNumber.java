@@ -1,6 +1,6 @@
 public class FindSecondMaxNumber {
 
-    public static int findSecondNumber(int[] numbers){
+    public static int findSecondMaximumNumber(int[] numbers){
         int max = Integer.MIN_VALUE;
         int secondMax = Integer.MIN_VALUE;
         for (int i=0; i<numbers.length; i++){
