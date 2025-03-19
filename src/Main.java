@@ -8,8 +8,10 @@ public class Main {
         ssl.insertToTheEnd(3);
         ssl.insertAtTheBeginning(0);
         ssl.insertToTheEnd(6);
-        ssl.insertDataAtGivenPoint(3, 4);
+
         ssl.insertToTheEnd(100);
+        ssl.insertDataAtGivenPoint(100, 4);
+        ssl.insertDataAtGivenPoint(4, 23);
 
         ssl.display();
 
@@ -52,7 +54,8 @@ public class Main {
 
         public void insertDataAtGivenPoint(int insertAfter, int dataToBeInserted){
             ListNode current = head;
-            while (current.next != null){
+            //To add a new end of the node we need to check if current is not null instead osf current.next
+            while (current != null){
                 if (current.data == insertAfter){
                     ListNode newNode = new ListNode(dataToBeInserted);
                     newNode.next = current.next;
