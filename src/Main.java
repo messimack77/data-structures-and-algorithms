@@ -2,13 +2,24 @@ import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
+        SinglyLinkedList ssl = new SinglyLinkedList();
+        ssl.insertAtTheBeginning(2);
+        ssl.insertAtTheBeginning(1);
+        ssl.insertToTheEnd(3);
+        ssl.insertAtTheBeginning(0);
+        ssl.insertToTheEnd(6);
+        ssl.insertDataAtGivenPoint(3, 4);
+        ssl.insertToTheEnd(100);
+
+        ssl.display();
 
     }
 
     public static class SinglyLinkedList{
         private ListNode head;
 
-        private static class ListNode{
+
+        public static class ListNode{
             private int data;
             private ListNode next;
 
@@ -19,9 +30,19 @@ public class Main {
             }
         }
 
+        public void display(){
+            ListNode current = head;
+            while (current != null){
+                System.out.println(current.data + "-->");
+                current = current.next;
+            }
+            System.out.println("null");
+        }
+
+
         public void insertAtTheBeginning(int data){
             ListNode newNode = new ListNode(data);
-            if (head == null){ // is the node is empty, the new node should be head
+            if (head == null){ //If the node is empty, the new node should be head
                 head = newNode;
             } else { // the new node's the next pointer should be our head
                 newNode.next = head;
@@ -29,24 +50,27 @@ public class Main {
             }
         }
 
-
-        public void insertToTheEnd(int data){
-            ListNode newListNode = new ListNode(data);
-            //if head is null, this means the singly linked list is empty.
-            // Then head is the new list node
-            if (head == null){
-                head = newListNode;
+        public void insertDataAtGivenPoint(int insertAfter, int dataToBeInserted){
+            ListNode current = head;
+            while (current.next != null){
+                if (current.data == insertAfter){
+                    ListNode newNode = new ListNode(dataToBeInserted);
+                    newNode.next = current.next;
+                    current.next = newNode;
+                    break;
+                }
+                current = current.next;
             }
+        }
 
-            //we need to move to end node to get the last node
-            // (we know that the last node points to null)
+
+        public void insertToTheEnd(int data) {
+            ListNode newNode = new ListNode(data);
             ListNode current = head;
             while (current.next != null){
                 current = current.next;
             }
-            //after we get the last node that points to null,
-            //we can point the current's node next to the new node
-            current.next = newListNode;
+            current.next = newNode;
         }
     }
 }
