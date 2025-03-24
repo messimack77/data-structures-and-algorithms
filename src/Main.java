@@ -8,10 +8,10 @@ public class Main {
         ssl.insertToTheEnd(3);
         ssl.insertAtTheBeginning(0);
         ssl.insertToTheEnd(6);
-
         ssl.insertToTheEnd(100);
-        ssl.insertDataAtGivenPoint(100, 4);
-        ssl.insertDataAtGivenPoint(4, 23);
+        ssl.insertNodeAtAGivenPosition(100, 4);
+        ssl.insertNodeAtAGivenPosition(100, 23);
+        ssl.insertDataAtTheGivenPosition(3, 99);
 
         ssl.display();
 
@@ -52,20 +52,38 @@ public class Main {
             }
         }
 
-        public void insertDataAtGivenPoint(int insertAfter, int dataToBeInserted){
+        public void insertNodeAtAGivenPosition(int insertAfter, int dataToBeInserted){
+            ListNode newNode = new ListNode(dataToBeInserted);
             ListNode current = head;
-            //To add a new end of the node we need to check if current is not null instead osf current.next
             while (current != null){
-                if (current.data == insertAfter){
-                    ListNode newNode = new ListNode(dataToBeInserted);
+                if(current.data == insertAfter){
                     newNode.next = current.next;
                     current.next = newNode;
-                    break;
                 }
                 current = current.next;
             }
         }
 
+        public void insertDataAtTheGivenPosition(int position, int data) {
+
+
+            ListNode previous = head;
+
+            ListNode newNode = new ListNode(data);
+            if (position == 1) {
+                newNode.next = head;
+                head = newNode;
+            } else {
+                int count = 1;
+                while (count < position - 1) {
+                    previous = previous.next;
+                    count++;
+                }
+                ListNode current = previous.next;
+                newNode.next = current;
+                previous.next = newNode;
+            }
+        }
 
         public void insertToTheEnd(int data) {
             ListNode newNode = new ListNode(data);
