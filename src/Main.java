@@ -12,6 +12,7 @@ public class Main {
         ssl.insertNodeAtAGivenPosition(100, 4);
         ssl.insertNodeAtAGivenPosition(100, 23);
         ssl.insertDataAtTheGivenPosition(3, 99);
+        ssl.deleteTheFirstNode();
 
         ssl.display();
 
@@ -64,6 +65,7 @@ public class Main {
             }
         }
 
+
         public void insertDataAtTheGivenPosition(int position, int data) {
 
 
@@ -92,6 +94,13 @@ public class Main {
                 current = current.next;
             }
             current.next = newNode;
+        }
+
+        public void deleteTheFirstNode(){
+            if (head == null){
+                return;
+            }
+            head = head.next;
         }
     }
 }
