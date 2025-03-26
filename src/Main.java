@@ -14,9 +14,16 @@ public class Main {
         ssl.insertDataAtTheGivenPosition(3, 99);
         ssl.deleteTheFirstNode();
         ssl.deleteFromTheEnd();
-        ssl.deleteFromTheEnd();
-        ssl.deleteFromTheEnd();
-        ssl.deleteFromTheEnd();
+        System.out.println("The last deleted: "+ssl.deleteFromTheEnd().data);
+        System.out.println("The last deleted: "+ssl.deleteFromTheEnd().data);
+        System.out.println("The last deleted: "+ssl.deleteFromTheEnd().data);
+        System.out.println("The last deleted: "+ssl.deleteFromTheEnd().data);
+        System.out.println("The last deleted: "+ssl.deleteFromTheEnd().data);
+        System.out.println("The last deleted: "+ssl.deleteFromTheEnd().data);
+        System.out.println("The last deleted: "+ssl.deleteFromTheEnd().data);
+        System.out.println("The last deleted: "+ssl.deleteFromTheEnd().data);
+        System.out.println("The last deleted: "+ssl.deleteFromTheEnd().data);
+
 
         ssl.display();
 
@@ -108,9 +115,16 @@ public class Main {
         }
 
 
-        public void deleteFromTheEnd(){
-            if (head == null || head.next == null){
-                return;
+        public ListNode deleteFromTheEnd(){
+            //if head is null, it means the list is empty, we return null
+            if (head == null){
+                return null;
+            }
+
+
+            //if the head node has no next, there is only one node
+            if (head.next == null){
+                return head;
             }
             ListNode current = head;
             // This should be traversed to the second last node.
@@ -121,6 +135,7 @@ public class Main {
                 current = current.next;
             }
             previous.next = null;
+            return current;
         }
     }
 }
