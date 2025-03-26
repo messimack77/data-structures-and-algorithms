@@ -13,6 +13,10 @@ public class Main {
         ssl.insertNodeAtAGivenPosition(100, 23);
         ssl.insertDataAtTheGivenPosition(3, 99);
         ssl.deleteTheFirstNode();
+        ssl.deleteFromTheEnd();
+        ssl.deleteFromTheEnd();
+        ssl.deleteFromTheEnd();
+        ssl.deleteFromTheEnd();
 
         ssl.display();
 
@@ -101,6 +105,22 @@ public class Main {
                 return;
             }
             head = head.next;
+        }
+
+
+        public void deleteFromTheEnd(){
+            if (head == null || head.next == null){
+                return;
+            }
+            ListNode current = head;
+            // This should be traversed to the second last node.
+            //then we break the link between the last node and null and then point the second last node to null
+            ListNode previous = null;
+            while (current.next != null){
+                previous = current;
+                current = current.next;
+            }
+            previous.next = null;
         }
     }
 }
