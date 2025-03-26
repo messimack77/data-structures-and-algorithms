@@ -121,7 +121,6 @@ public class Main {
                 return null;
             }
 
-
             //if the head node has no next, there is only one node
             if (head.next == null){
                 return head;
