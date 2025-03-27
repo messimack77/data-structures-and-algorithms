@@ -9,44 +9,30 @@ public class Main {
         ssl.insertAtTheBeginning(0);
         ssl.insertToTheEnd(6);
         ssl.insertToTheEnd(100);
-        ssl.insertNodeAtAGivenPosition(100, 4);
-        ssl.insertNodeAtAGivenPosition(100, 23);
-        ssl.insertDataAtTheGivenPosition(3, 99);
-        ssl.deleteTheFirstNode();
-        ssl.deleteFromTheEnd();
-        System.out.println("The last deleted: "+ssl.deleteFromTheEnd().data);
-        System.out.println("The last deleted: "+ssl.deleteFromTheEnd().data);
-        System.out.println("The last deleted: "+ssl.deleteFromTheEnd().data);
-        System.out.println("The last deleted: "+ssl.deleteFromTheEnd().data);
-        System.out.println("The last deleted: "+ssl.deleteFromTheEnd().data);
-        System.out.println("The last deleted: "+ssl.deleteFromTheEnd().data);
-        System.out.println("The last deleted: "+ssl.deleteFromTheEnd().data);
-        System.out.println("The last deleted: "+ssl.deleteFromTheEnd().data);
-        System.out.println("The last deleted: "+ssl.deleteFromTheEnd().data);
 
-
+        ssl.deleteNodeFromTheGivenPosition(3);
         ssl.display();
 
     }
 
-    public static class SinglyLinkedList{
+    public static class SinglyLinkedList {
         private ListNode head;
 
 
-        public static class ListNode{
+        public static class ListNode {
             private int data;
             private ListNode next;
 
 
-            public ListNode(int data){
+            public ListNode(int data) {
                 this.data = data;
                 this.next = null;
             }
         }
 
-        public void display(){
+        public void display() {
             ListNode current = head;
-            while (current != null){
+            while (current != null) {
                 System.out.println(current.data + "-->");
                 current = current.next;
             }
@@ -54,9 +40,9 @@ public class Main {
         }
 
 
-        public void insertAtTheBeginning(int data){
+        public void insertAtTheBeginning(int data) {
             ListNode newNode = new ListNode(data);
-            if (head == null){ //If the node is empty, the new node should be head
+            if (head == null) { //If the node is empty, the new node should be head
                 head = newNode;
             } else { // the new node's the next pointer should be our head
                 newNode.next = head;
@@ -64,11 +50,11 @@ public class Main {
             }
         }
 
-        public void insertNodeAtAGivenPosition(int insertAfter, int dataToBeInserted){
+        public void insertNodeAtAGivenPosition(int insertAfter, int dataToBeInserted) {
             ListNode newNode = new ListNode(dataToBeInserted);
             ListNode current = head;
-            while (current != null){
-                if(current.data == insertAfter){
+            while (current != null) {
+                if (current.data == insertAfter) {
                     newNode.next = current.next;
                     current.next = newNode;
                 }
@@ -135,6 +121,23 @@ public class Main {
             }
             previous.next = null;
             return current;
+        }
+
+        public void deleteNodeFromTheGivenPosition(int position){
+
+            if (position == 1){
+                head = head.next;
+            } else {
+                ListNode previous = head;
+                int count = 1;
+                while (count < position - 1){
+                    previous = previous.next;
+                    count++;
+                }
+
+                ListNode nodeToBeDeleted = previous.next;
+                previous.next = nodeToBeDeleted.next;
+            }
         }
     }
 }
