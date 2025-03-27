@@ -13,6 +13,7 @@ public class Main {
         ssl.deleteNodeFromTheGivenPosition(3);
         ssl.display();
 
+        System.out.println(ssl.searchForNode(3));
     }
 
     public static class SinglyLinkedList {
@@ -138,6 +139,19 @@ public class Main {
                 ListNode nodeToBeDeleted = previous.next;
                 previous.next = nodeToBeDeleted.next;
             }
+        }
+
+
+        public boolean searchForNode(int target){
+            ListNode current = head;
+            while (current != null){
+                if (current.data == target){
+                    return true;
+                }
+                current = current.next;
+
+            }
+            return false;
         }
     }
 }
