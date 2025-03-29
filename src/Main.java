@@ -5,15 +5,16 @@ public class Main {
         SinglyLinkedList ssl = new SinglyLinkedList();
         ssl.insertAtTheBeginning(2);
         ssl.insertAtTheBeginning(1);
-        ssl.insertToTheEnd(3);
+        ssl.insertToTheEnd(2);
         ssl.insertAtTheBeginning(0);
-        ssl.insertToTheEnd(6);
-        ssl.insertToTheEnd(100);
+        ssl.insertToTheEnd(3);
+        ssl.insertToTheEnd(4);
 
         ssl.deleteNodeFromTheGivenPosition(3);
-        ssl.display();
 
-        System.out.println(ssl.searchForNode(3));
+        SinglyLinkedList.ListNode reversedNode = ssl.reverseNode(ssl.head);
+        ssl.display(reversedNode);
+
     }
 
     public static class SinglyLinkedList {
@@ -31,7 +32,7 @@ public class Main {
             }
         }
 
-        public void display() {
+        public void display(ListNode head) {
             ListNode current = head;
             while (current != null) {
                 System.out.println(current.data + "-->");
@@ -156,19 +157,21 @@ public class Main {
 
 
         public ListNode reverseNode(ListNode head){
-            if (head == null){
-                return head;
-            }
-            ListNode current = head;
-            ListNode next = null;
-            ListNode previous = null;
-            while (current != null){
-                next = current.next;
-                current.next = previous;
-                previous = current;
-                current = next;
-            }
-            return previous;
+            //   null-> 1-> 2-> 3-> 4-> 5
+           if (head == null){
+            return null;
+           }
+           ListNode current = head;
+           ListNode previous = null;
+           ListNode next = null;
+
+           while (current != null){
+               next = current.next; //store the next node
+               current.next = previous; //reverse the link
+               previous = current; //move the previous pointer to current
+               current = next; //move to the next node
+           }
+           return previous;
         }
     }
 }
