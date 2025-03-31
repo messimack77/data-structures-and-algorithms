@@ -9,11 +9,10 @@ public class Main {
         ssl.insertAtTheBeginning(0);
         ssl.insertToTheEnd(3);
         ssl.insertToTheEnd(4);
+        ssl.insertToTheEnd(100);
 
         ssl.deleteNodeFromTheGivenPosition(3);
-
-        SinglyLinkedList.ListNode reversedNode = ssl.reverseNode(ssl.head);
-        ssl.display(reversedNode);
+        System.out.println("Middle node: "+ssl.findTheMiddleNode().data);
 
     }
 
@@ -172,6 +171,18 @@ public class Main {
                current = next; //move to the next node
            }
            return previous;
+        }
+        public ListNode findTheMiddleNode(){
+            if (head == null){
+                return null;
+            }
+            ListNode fastPointer = head;
+            ListNode slowPointer = head;
+            while (fastPointer != null && fastPointer.next != null){
+                slowPointer = slowPointer.next;
+                fastPointer = fastPointer.next.next;
+            }
+            return slowPointer;
         }
     }
 }
