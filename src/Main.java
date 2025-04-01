@@ -14,6 +14,11 @@ public class Main {
         ssl.deleteNodeFromTheGivenPosition(3);
         System.out.println("Middle node: "+ssl.findTheMiddleNode().data);
 
+        ssl.display(ssl.head);
+        System.out.println("The fourth node is "+ ssl.findTheNthNodeInTheList(3).data);
+
+
+
     }
 
     public static class SinglyLinkedList {
@@ -183,6 +188,18 @@ public class Main {
                 fastPointer = fastPointer.next.next;
             }
             return slowPointer;
+        }
+
+        public ListNode findTheNthNodeInTheList(int n){
+            ListNode current = head;
+            ListNode previous = null;
+            int count = 1;
+            while (count < n){
+                current = current.next;
+                previous = current;
+                count++;
+            }
+            return previous;
         }
     }
 }
