@@ -201,5 +201,16 @@ public class Main {
             }
             return previous;
         }
+
+        public ListNode findTheSecondLastNodeFromTheList() {
+            ListNode current = head;
+            ListNode previous = null;
+            while (current.next != null) {
+                previous = current;
+                current = current.next;
+
+            }
+            return previous;
+        }
     }
 }
