@@ -15,7 +15,11 @@ public class Main {
         System.out.println("Middle node: "+ssl.findTheMiddleNode().data);
 
         ssl.display(ssl.head);
-        System.out.println("The fourth node is "+ ssl.findTheNthNodeInTheList(3).data);
+        System.out.println("The fourth node is "+ ssl.findTheNthNodeInTheList(4).data);
+
+//        System.out.println("New N th node"+ssl.findTheNthNodeFromTheList(4).data);
+
+        System.out.println("nth node from the end "+ssl.findTheNthNodeFromTheEnd(4).data);
 
 
 
@@ -211,6 +215,28 @@ public class Main {
 
             }
             return previous;
+        }
+
+
+        public ListNode findTheNthNodeFromTheEnd(int n){
+          ListNode fastPointer = head;
+          ListNode slowPointer = head;
+          int count = 0;
+
+            // This loop is used to create n gap between main pointer and reference pointer
+          while (count < n){
+              fastPointer = fastPointer.next;
+              count++;
+          }
+
+            // As the above loop created n gap for us, when the fast pointer reaches the null,
+            // the slow pointer will be exactly at the n node from the end
+          while (fastPointer != null){
+              slowPointer = slowPointer.next;
+              fastPointer = fastPointer.next;
+          }
+
+          return slowPointer;
         }
     }
 }
