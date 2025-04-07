@@ -8,8 +8,11 @@ public class Main {
         ssl.insertToTheEnd(2);
         ssl.insertAtTheBeginning(0);
         ssl.insertToTheEnd(3);
+        ssl.insertToTheEnd(3);
         ssl.insertToTheEnd(4);
         ssl.insertToTheEnd(100);
+        ssl.insertToTheEnd(100);
+
 
         ssl.deleteNodeFromTheGivenPosition(3);
         System.out.println("Middle node: "+ssl.findTheMiddleNode().data);
@@ -20,6 +23,10 @@ public class Main {
 //        System.out.println("New N th node"+ssl.findTheNthNodeFromTheList(4).data);
 
         System.out.println("nth node from the end "+ssl.findTheNthNodeFromTheEnd(4).data);
+
+        SinglyLinkedList.ListNode listNode = ssl.removeDuplicatesFromSortedLinkedList(ssl.head);
+        System.out.println("***************");
+        ssl.display(listNode);
 
 
 
@@ -219,24 +226,34 @@ public class Main {
 
 
         public ListNode findTheNthNodeFromTheEnd(int n){
-          ListNode fastPointer = head;
           ListNode slowPointer = head;
+          ListNode fastPointer = head;
           int count = 0;
 
-            // This loop is used to create n gap between main pointer and reference pointer
           while (count < n){
               fastPointer = fastPointer.next;
               count++;
           }
 
-            // As the above loop created n gap for us, when the fast pointer reaches the null,
-            // the slow pointer will be exactly at the n node from the end
           while (fastPointer != null){
               slowPointer = slowPointer.next;
               fastPointer = fastPointer.next;
           }
-
           return slowPointer;
+        }
+
+        // Remove duplicates from sorted linked list
+        public ListNode removeDuplicatesFromSortedLinkedList(ListNode head) {
+            ListNode current = head;
+            while (current != null && current.next != null){
+
+                if (current.data == current.next.data){ // if the current's data is equal to the next's data, it means there is a duplicate
+                    current.next = current.next.next; // then we have to remove the link between them and point the current's next to next's next
+                } else {
+                    current = current.next; // move to the next node if the current node's data is not equal with the next's data
+                }
+            }
+            return head;
         }
     }
 }
