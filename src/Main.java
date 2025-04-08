@@ -3,30 +3,41 @@ import java.util.List;
 public class Main {
     public static void main(String[] args) {
         SinglyLinkedList ssl = new SinglyLinkedList();
+        ssl.insertAtTheBeginning(8);
+        ssl.insertAtTheBeginning(7);
+        ssl.insertAtTheBeginning(6);
+        ssl.insertAtTheBeginning(4);
+        ssl.insertAtTheBeginning(3);
         ssl.insertAtTheBeginning(2);
         ssl.insertAtTheBeginning(1);
-        ssl.insertToTheEnd(2);
-        ssl.insertAtTheBeginning(0);
-        ssl.insertToTheEnd(3);
-        ssl.insertToTheEnd(3);
-        ssl.insertToTheEnd(4);
-        ssl.insertToTheEnd(100);
-        ssl.insertToTheEnd(100);
+//        ssl.insertToTheEnd(2);
+//        ssl.insertAtTheBeginning(0);
+//        ssl.insertToTheEnd(3);
+//        ssl.insertToTheEnd(3);
+//        ssl.insertToTheEnd(4);
+//        ssl.insertToTheEnd(100);
+//        ssl.insertToTheEnd(100);
 
 
-        ssl.deleteNodeFromTheGivenPosition(3);
-        System.out.println("Middle node: "+ssl.findTheMiddleNode().data);
 
-        ssl.display(ssl.head);
-        System.out.println("The fourth node is "+ ssl.findTheNthNodeInTheList(4).data);
+//        ssl.deleteNodeFromTheGivenPosition(4);
+//        System.out.println("Middle node: "+ssl.findTheMiddleNode().data);
+//
+//        ssl.display(ssl.head);
+//        System.out.println("The fourth node is "+ ssl.findTheNthNodeInTheList(4).data);
 
 //        System.out.println("New N th node"+ssl.findTheNthNodeFromTheList(4).data);
 
-        System.out.println("nth node from the end "+ssl.findTheNthNodeFromTheEnd(4).data);
+//        System.out.println("nth node from the end "+ssl.findTheNthNodeFromTheEnd(4).data);
 
-        SinglyLinkedList.ListNode listNode = ssl.removeDuplicatesFromSortedLinkedList(ssl.head);
-        System.out.println("***************");
-        ssl.display(listNode);
+//        SinglyLinkedList.ListNode listNode = ssl.removeDuplicatesFromSortedLinkedList(ssl.head);
+//        System.out.println("***************");
+//        ssl.display(listNode);
+
+
+        System.out.println("Insert to sorted");
+        ssl.insertNodeToSortedLinkedList(5);
+        ssl.display(ssl.head);
 
 
 
@@ -244,16 +255,33 @@ public class Main {
 
         // Remove duplicates from sorted linked list
         public ListNode removeDuplicatesFromSortedLinkedList(ListNode head) {
-            ListNode current = head;
-            while (current != null && current.next != null){
-
-                if (current.data == current.next.data){ // if the current's data is equal to the next's data, it means there is a duplicate
-                    current.next = current.next.next; // then we have to remove the link between them and point the current's next to next's next
-                } else {
-                    current = current.next; // move to the next node if the current node's data is not equal with the next's data
-                }
-            }
-            return head;
+           ListNode current = head;
+           while (current != null && current.next != null){
+               if (current.data == current.next.data){
+                   current.next = current.next.next;
+               } else {
+                   current = current.next;
+               }
+           }
+           return head;
         }
+
+
+        public void insertNodeToSortedLinkedList(int data){
+            // 1,2,3,4,6,7,8        insert 5
+            ListNode newNode = new ListNode(data);
+            ListNode previous = null;
+            ListNode current = head;
+
+            while (current != null && current.data < newNode.data){ // we need to traverse till the current's data is greater than the new node's data
+                previous = current;
+                current = current.next;
+            }
+            // after getting the first data that is greater than the new node's data, we point the new node's next to current
+            //then point the previous next to the new node
+            newNode.next = current;
+            previous.next = newNode;
+        }
+
     }
 }
