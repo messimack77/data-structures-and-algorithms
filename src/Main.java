@@ -40,6 +40,13 @@ public class Main {
         ssl.display(ssl.head);
 
 
+        System.out.println("Delete from sorted by key");
+
+        ssl.removeTheGivenKey(3);
+
+        ssl.display(ssl.head);
+
+
 
     }
 
@@ -273,7 +280,7 @@ public class Main {
             ListNode previous = null;
             ListNode current = head;
 
-            while (current != null && current.data < newNode.data){ // we need to traverse till the current's data is greater than the new node's data
+            while (current != null && current.data < newNode.data){ // Traverse the list while the current node is not null and its data is less than the new node's data
                 previous = current;
                 current = current.next;
             }
@@ -281,6 +288,18 @@ public class Main {
             //then point the previous next to the new node
             newNode.next = current;
             previous.next = newNode;
+        }
+
+
+        public void removeTheGivenKey(int key){
+            ListNode current = head;
+            ListNode previous = null;
+            while (current != null && current.data < key){
+                previous = current;
+                current = current.next;
+            }
+
+            previous.next = current.next;
         }
 
     }
