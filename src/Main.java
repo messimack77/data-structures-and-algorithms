@@ -2,14 +2,14 @@ import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
-        SinglyLinkedList ssl = new SinglyLinkedList();
-        ssl.insertAtTheBeginning(8);
-        ssl.insertAtTheBeginning(7);
-        ssl.insertAtTheBeginning(6);
-        ssl.insertAtTheBeginning(4);
-        ssl.insertAtTheBeginning(3);
-        ssl.insertAtTheBeginning(2);
-        ssl.insertAtTheBeginning(1);
+//        SinglyLinkedList ssl = new SinglyLinkedList();
+//        ssl.insertAtTheBeginning(8);
+//        ssl.insertAtTheBeginning(7);
+//        ssl.insertAtTheBeginning(6);
+//        ssl.insertAtTheBeginning(4);
+//        ssl.insertAtTheBeginning(3);
+//        ssl.insertAtTheBeginning(2);
+//        ssl.insertAtTheBeginning(1);
 //        ssl.insertToTheEnd(2);
 //        ssl.insertAtTheBeginning(0);
 //        ssl.insertToTheEnd(3);
@@ -35,18 +35,23 @@ public class Main {
 //        ssl.display(listNode);
 
 
-        System.out.println("Insert to sorted");
-        ssl.insertNodeToSortedLinkedList(5);
-        ssl.display(ssl.head);
+//        System.out.println("Insert to sorted");
+//        ssl.insertNodeToSortedLinkedList(5);
+//        ssl.display(ssl.head);
+//
+//
+//        System.out.println("Delete from sorted by key");
+//
+//        ssl.removeTheGivenKey(3);
+//
+//        ssl.display(ssl.head);
+//
+//        System.out.println(ssl.detectIfTheListHasLoop());
 
 
-        System.out.println("Delete from sorted by key");
-
-        ssl.removeTheGivenKey(3);
-
-        ssl.display(ssl.head);
-
-
+        SinglyLinkedList ssl = new SinglyLinkedList();
+        ssl.createLoop();
+        System.out.println(ssl.detectIfTheListHasLoop());
 
     }
 
@@ -300,6 +305,41 @@ public class Main {
             }
 
             previous.next = current.next;
+        }
+
+
+
+        public void createLoop(){
+
+            ListNode first = new ListNode(1);
+            ListNode second = new ListNode(2);
+            ListNode third = new ListNode(3);
+            ListNode fourth = new ListNode(4);
+            ListNode fifth = new ListNode(5);
+            ListNode sixth = new ListNode(6);
+
+            head = first;
+            first.next = second;
+            second.next = third;
+            third.next = fourth;
+            fourth.next = fifth;
+            fifth.next = sixth;
+            sixth.next = third;
+        }
+
+        public boolean detectIfTheListHasLoop(){
+            ListNode slowPointer = head;
+            ListNode fastPointer = head;
+
+            while (fastPointer != null && fastPointer.next != null){
+                slowPointer = slowPointer.next;
+                fastPointer = fastPointer.next.next;
+                if (slowPointer == fastPointer){
+                    return true;
+                }
+            }
+
+            return false;
         }
 
     }
