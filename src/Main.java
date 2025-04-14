@@ -22,7 +22,6 @@ public class Main {
         ssl.insertAtTheBeginning(1);
 //        1,2]
 
-        ssl.removeNthFromEnd(ssl.head,2);
         ssl.display(ssl.head);
 
 
@@ -357,63 +356,6 @@ public class Main {
             return false;
         }
 
-        public int[] findTheMaximumOfTheSlidingWindow(int[] numbers){
-
-//            1,8,3,4,9,6
-            int maxSum = 0;
-            int sum = 0;
-            int i = 0;
-            int j;
-            int k;
-
-            int maxI = 0;
-            int maxJ = 0;
-            int maxK = 0;
-
-            while (i <= numbers.length - 3){
-                j = i + 1;
-                k = i + 2;
-
-                sum = numbers[i] + numbers[j] + numbers[k];
-                if (sum > maxSum){
-                    maxSum = sum;
-                    maxI = i;
-                    maxJ = j;
-                    maxK = k;
-                }
-                i++;
-            }
-            System.out.println(maxSum);
-            return new int[]{maxI,maxJ,maxK};
-        }
-
-
-        public void removeNthFromEnd(ListNode head, int n) {
-            ListNode slowPointer = head;
-            ListNode fastPointer = head;
-            ListNode previous = head;
-
-
-
-            if(head.next == null){
-                head = null;
-            }
-
-            int count = 1;
-            while(count < n){
-                fastPointer = fastPointer.next;
-                count++;
-            }
-
-            while(fastPointer != null){
-                previous = slowPointer;
-                slowPointer = slowPointer.next;
-                fastPointer = fastPointer.next;
-            }
-
-            previous.next = slowPointer.next;
-
-        }
 
         public ListNode findTheStartOfTheLoop(){
             ListNode fastPointer = head;
