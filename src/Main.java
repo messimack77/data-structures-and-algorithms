@@ -1,8 +1,6 @@
-import java.util.List;
-
 public class Main {
     public static void main(String[] args) {
-//        SinglyLinkedList ssl = new SinglyLinkedList();
+        SinglyLinkedList ssl = new SinglyLinkedList();
 //        ssl.insertAtTheBeginning(8);
 //        ssl.insertAtTheBeginning(7);
 //        ssl.insertAtTheBeginning(6);
@@ -17,7 +15,15 @@ public class Main {
 //        ssl.insertToTheEnd(4);
 //        ssl.insertToTheEnd(100);
 //        ssl.insertToTheEnd(100);
+//
+//        ssl.removeTheGivenKey(100);
+//        ssl.display(ssl.head);
+        ssl.insertAtTheBeginning(2);
+        ssl.insertAtTheBeginning(1);
+//        1,2]
 
+        ssl.removeNthFromEnd(ssl.head,2);
+        ssl.display(ssl.head);
 
 
 //        ssl.deleteNodeFromTheGivenPosition(4);
@@ -49,10 +55,14 @@ public class Main {
 //        System.out.println(ssl.detectIfTheListHasLoop());
 
 
-        SinglyLinkedList ssl = new SinglyLinkedList();
-        ssl.createLoop();
-        System.out.println(ssl.detectIfTheListHasLoop());
+//        SinglyLinkedList ssl = new SinglyLinkedList();
+//        ssl.createLoop();
+//        System.out.println(ssl.detectIfTheListHasLoop());
 
+
+//        int[] numbers = {1,8,30,4,7,6};
+//        int[] theMaximumOfTheSlidingWindow = ssl.findTheMaximumOfTheSlidingWindow(numbers);
+//        System.out.println(Arrays.toString(theMaximumOfTheSlidingWindow));
     }
 
     public static class SinglyLinkedList {
@@ -60,7 +70,7 @@ public class Main {
 
 
         public static class ListNode {
-            private int data;
+            private final int data;
             private ListNode next;
 
 
@@ -302,6 +312,11 @@ public class Main {
             while (current != null && current.data < key){
                 previous = current;
                 current = current.next;
+
+                if (current.data == key){
+                    previous.next = current.next;
+                }
+
             }
 
             previous.next = current.next;
@@ -342,5 +357,82 @@ public class Main {
             return false;
         }
 
+        public int[] findTheMaximumOfTheSlidingWindow(int[] numbers){
+
+//            1,8,3,4,9,6
+            int maxSum = 0;
+            int sum = 0;
+            int i = 0;
+            int j;
+            int k;
+
+            int maxI = 0;
+            int maxJ = 0;
+            int maxK = 0;
+
+            while (i <= numbers.length - 3){
+                j = i + 1;
+                k = i + 2;
+
+                sum = numbers[i] + numbers[j] + numbers[k];
+                if (sum > maxSum){
+                    maxSum = sum;
+                    maxI = i;
+                    maxJ = j;
+                    maxK = k;
+                }
+                i++;
+            }
+            System.out.println(maxSum);
+            return new int[]{maxI,maxJ,maxK};
+        }
+
+
+        public void removeNthFromEnd(ListNode head, int n) {
+            ListNode slowPointer = head;
+            ListNode fastPointer = head;
+            ListNode previous = head;
+
+
+
+            if(head.next == null){
+                head = null;
+            }
+
+            int count = 1;
+            while(count < n){
+                fastPointer = fastPointer.next;
+                count++;
+            }
+
+            while(fastPointer != null){
+                previous = slowPointer;
+                slowPointer = slowPointer.next;
+                fastPointer = fastPointer.next;
+            }
+
+            previous.next = slowPointer.next;
+
+        }
+
+        public ListNode findTheStartOfTheLoop(){
+            ListNode fastPointer = head;
+            ListNode slowPointer = head;
+            ListNode temp = null;
+
+            while (fastPointer != null && fastPointer.next != null){
+                slowPointer = slowPointer.next;
+                fastPointer = fastPointer.next.next;
+
+                if (slowPointer == fastPointer){
+                    temp = head;
+                    while (temp != slowPointer){
+                        temp = temp.next;
+                        slowPointer = slowPointer.next;
+                    }
+                }
+            }
+            return temp;
+        }
     }
 }
