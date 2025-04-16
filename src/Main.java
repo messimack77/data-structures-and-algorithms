@@ -376,5 +376,32 @@ public class Main {
             }
             return temp;
         }
+
+        public void removeCycleFromLinkedList(){
+            ListNode slowPointer = head;
+            ListNode fastPointer = head;
+
+            while (fastPointer != null && fastPointer.next != null){
+                slowPointer = slowPointer.next;
+                fastPointer = fastPointer.next.next;
+
+                if (slowPointer == fastPointer){
+                    // we get a loop here
+                    ListNode temp = head;
+
+                    while (temp != slowPointer) {
+                        temp = temp.next;
+                        slowPointer = slowPointer.next;
+                    }
+
+                    while (slowPointer.next != temp) {
+                        slowPointer = slowPointer.next;
+                    }
+
+                    slowPointer.next = null; // we point the last node's next to null to remove the cycle
+                    return;
+                }
+            }
+        }
     }
 }
